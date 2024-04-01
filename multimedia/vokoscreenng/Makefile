@@ -1,5 +1,5 @@
 PORTNAME=	vokoscreenng
-DISTVERSION=	4.0.0
+DISTVERSION=	4.1.0
 CATEGORIES=	multimedia
 
 MAINTAINER=	michael.straubej@gmail.com
@@ -22,11 +22,6 @@ GH_ACCOUNT=	vkohaupt
 GH_PROJECT=	vokoscreenNG
 
 WRKSRC_SUBDIR=	src
-
-post-patch:
-	# These substitutions can be removed for upstream releases > 4.0.0
-	${SED} -i -e 's|linux:|unix:|g' ${WRKSRC}/QGlobalShortcut/qglobalshortcut.pri
-	${FIND} ${WRKSRC} -type f -exec  ${SED} -i -e 's|Q_OS_LINUX|Q_OS_UNIX|g' {} +
 
 do-install:
 	${INSTALL_PROGRAM} ${WRKSRC}/vokoscreenNG \
